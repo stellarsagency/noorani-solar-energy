@@ -107,12 +107,12 @@ export default function Projects() {
             {projects.map(({ title, location, type, capacity, image }, i) => (
               <Reveal key={title} variant="up" delay={(i % 3) * 130}>
                 <div className="group h-full overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gray-50 p-2">
                     <img
                       src={image}
                       alt={title}
                       loading="lazy"
-                      className="h-full w-full object-cover transition duration-700 group-hover:scale-115"
+                      className="h-full w-full object-contain transition duration-700 group-hover:scale-105"
                     />
                     <span className="absolute left-4 top-4 rounded-full bg-cta px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
                       {type}

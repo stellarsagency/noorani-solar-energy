@@ -271,7 +271,7 @@ function Products() {
           {products.map(({ title, image }, i) => (
             <Reveal key={title} variant="up" delay={i * 120} className="h-full">
               <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-gray-50 p-4">
+                <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-gray-50 p-2">
                   <img
                     src={image}
                     alt={title}

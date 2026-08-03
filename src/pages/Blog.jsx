@@ -143,7 +143,7 @@ export default function Blog() {
                   <div
                     className={
                       product
-                        ? 'flex aspect-[16/10] items-center justify-center overflow-hidden bg-gray-50 p-4'
+                        ? 'flex aspect-[16/10] items-center justify-center overflow-hidden bg-gray-50 p-2'
                         : 'aspect-[16/10] overflow-hidden'
                     }
                   >

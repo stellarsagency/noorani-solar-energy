@@ -102,12 +102,14 @@ export default function About() {
 
           <Reveal variant="right" delay={150}>
             <div className="relative">
-              <img
-                src={IMG.aboutMain}
-                alt="Solar panels installation"
-                loading="lazy"
-                className="aspect-[4/3] w-full rounded-3xl object-cover sm:aspect-[16/10]"
-              />
+              <div className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-3xl bg-gray-50 p-2 sm:aspect-[16/10]">
+                <img
+                  src={IMG.aboutMain}
+                  alt="Solar panels installation"
+                  loading="lazy"
+                  className="h-full w-full object-contain"
+                />
+              </div>
               <div className="animate-float absolute -bottom-6 left-6 flex items-center gap-4 rounded-2xl bg-cta px-6 py-4 shadow-xl shadow-cta/40">
                 <Sun size={30} className="text-white" />
                 <div>
