@@ -11,6 +11,8 @@ import {
 import PageBanner from '../components/PageBanner'
 import SectionHeading from '../components/SectionHeading'
 import CtaBanner from '../components/CtaBanner'
+import Reveal from '../components/Reveal'
+import CountUp from '../components/CountUp'
 
 const IMG = {
   aboutMain:
@@ -67,7 +69,7 @@ export default function About() {
 
       <section className="bg-white">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:px-8">
-          <div>
+          <Reveal variant="left">
             <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-cta">
               <span className="h-px w-10 bg-cta" />
               Who We Are
@@ -88,47 +90,55 @@ export default function About() {
               bills and a greener future.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              {badges.map(({ icon: Icon, label }) => (
+              {badges.map(({ icon: Icon, label }, i) => (
                 <span
                   key={label}
-                  className="inline-flex items-center gap-2 rounded-full bg-accent-light px-4 py-2 text-sm font-semibold text-navy"
+                  className="animate-pop-in inline-flex items-center gap-2 rounded-full bg-accent-light px-4 py-2 text-sm font-semibold text-navy transition hover:-translate-y-0.5 hover:bg-cta hover:text-white"
+                  style={{ animationDelay: `${0.3 + i * 0.15}s` }}
                 >
                   <Icon size={16} className="text-cta" />
                   {label}
                 </span>
               ))}
             </div>
-          </div>
+          </Reveal>
 
-          <div className="relative">
-            <img
-              src={IMG.aboutMain}
-              alt="Solar panels installation"
-              loading="lazy"
-              className="h-80 w-full rounded-3xl object-cover sm:h-[26rem]"
-            />
-            <div className="absolute -bottom-6 left-6 flex items-center gap-4 rounded-2xl bg-cta px-6 py-4 shadow-xl shadow-cta/40">
-              <Sun size={30} className="text-white" />
-              <div>
-                <p className="text-2xl font-extrabold text-white">10+</p>
-                <p className="text-xs font-semibold uppercase tracking-wider text-white/80">
-                  Years of Experience
-                </p>
+          <Reveal variant="right" delay={150}>
+            <div className="relative">
+              <img
+                src={IMG.aboutMain}
+                alt="Solar panels installation"
+                loading="lazy"
+                className="h-80 w-full rounded-3xl object-cover sm:h-[26rem]"
+              />
+              <div className="animate-float absolute -bottom-6 left-6 flex items-center gap-4 rounded-2xl bg-cta px-6 py-4 shadow-xl shadow-cta/40">
+                <Sun size={30} className="text-white" />
+                <div>
+                  <p className="text-2xl font-extrabold text-white">10+</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-white/80">
+                    Years of Experience
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="bg-navy">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 lg:grid-cols-4 lg:px-8">
-          {stats.map(({ value, label }) => (
-            <div key={label} className="text-center">
-              <p className="text-3xl font-extrabold text-cta sm:text-4xl">
-                {value}
-              </p>
-              <p className="mt-1 text-sm text-white/70">{label}</p>
-            </div>
+      <section className="relative overflow-hidden bg-navy">
+        <div className="animate-drift absolute -right-10 -top-10 size-56 rounded-full bg-cta/20 blur-3xl" />
+        <div className="animate-drift absolute -bottom-16 -left-8 size-64 rounded-full bg-accent-light/10 blur-3xl" style={{ animationDelay: '-9s' }} />
+        <div className="relative mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 sm:px-6 lg:grid-cols-4 lg:px-8">
+          {stats.map(({ value, label }, i) => (
+            <Reveal key={label} variant="up" delay={i * 130}>
+              <div className="text-center">
+                <CountUp
+                  value={value}
+                  className="text-3xl font-extrabold text-cta sm:text-4xl"
+                />
+                <p className="mt-1 text-sm text-white/70">{label}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -140,28 +150,34 @@ export default function About() {
             subtitle="What drives us every single day"
           />
           <div className="mt-12 grid gap-8 md:grid-cols-2">
-            <div className="rounded-3xl bg-accent-light/40 p-8">
-              <span className="flex size-14 items-center justify-center rounded-xl bg-cta text-white">
-                <Target size={26} />
-              </span>
-              <h3 className="mt-5 text-xl font-bold text-navy">Our Mission</h3>
-              <p className="mt-3 leading-relaxed text-body">
-                To make solar energy simple, affordable and reliable for every
-                Pakistani home and business by delivering premium products,
-                expert installation and honest after-sales care.
-              </p>
-            </div>
-            <div className="rounded-3xl bg-accent-light/40 p-8">
-              <span className="flex size-14 items-center justify-center rounded-xl bg-navy text-white">
-                <Eye size={26} />
-              </span>
-              <h3 className="mt-5 text-xl font-bold text-navy">Our Vision</h3>
-              <p className="mt-3 leading-relaxed text-body">
-                A Pakistan where clean, sustainable energy powers every home
-                and industry — reducing costs, creating jobs and protecting the
-                planet for future generations.
-              </p>
-            </div>
+            <Reveal variant="left">
+              <div className="group relative h-full overflow-hidden rounded-3xl bg-accent-light/40 p-8 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-200">
+                <span className="absolute -right-6 -top-6 size-28 rounded-full bg-cta/10 transition duration-500 group-hover:scale-150" />
+                <span className="flex size-14 items-center justify-center rounded-xl bg-cta text-white transition duration-300 group-hover:rotate-6 group-hover:scale-110">
+                  <Target size={26} />
+                </span>
+                <h3 className="mt-5 text-xl font-bold text-navy">Our Mission</h3>
+                <p className="mt-3 leading-relaxed text-body">
+                  To make solar energy simple, affordable and reliable for every
+                  Pakistani home and business by delivering premium products,
+                  expert installation and honest after-sales care.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal variant="right" delay={150}>
+              <div className="group relative h-full overflow-hidden rounded-3xl bg-accent-light/40 p-8 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-200">
+                <span className="absolute -right-6 -top-6 size-28 rounded-full bg-navy/10 transition duration-500 group-hover:scale-150" />
+                <span className="flex size-14 items-center justify-center rounded-xl bg-navy text-white transition duration-300 group-hover:rotate-6 group-hover:scale-110">
+                  <Eye size={26} />
+                </span>
+                <h3 className="mt-5 text-xl font-bold text-navy">Our Vision</h3>
+                <p className="mt-3 leading-relaxed text-body">
+                  A Pakistan where clean, sustainable energy powers every home
+                  and industry — reducing costs, creating jobs and protecting
+                  the planet for future generations.
+                </p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -173,17 +189,16 @@ export default function About() {
             subtitle="The principles behind every installation"
           />
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map(({ icon: Icon, title, text }) => (
-              <div
-                key={title}
-                className="group rounded-2xl bg-white p-7 shadow-md shadow-gray-200 transition hover:-translate-y-1 hover:shadow-xl"
-              >
-                <span className="flex size-14 items-center justify-center rounded-xl bg-accent-light text-cta transition group-hover:bg-cta group-hover:text-white">
-                  <Icon size={26} />
-                </span>
-                <h3 className="mt-5 text-lg font-bold text-navy">{title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-body">{text}</p>
-              </div>
+            {values.map(({ icon: Icon, title, text }, i) => (
+              <Reveal key={title} variant="up" delay={i * 120} className="h-full">
+                <div className="group flex h-full flex-col rounded-2xl bg-white p-7 shadow-md shadow-gray-200 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+                  <span className="flex size-14 items-center justify-center rounded-xl bg-accent-light text-cta transition duration-300 group-hover:scale-110 group-hover:bg-cta group-hover:text-white">
+                    <Icon size={26} />
+                  </span>
+                  <h3 className="mt-5 text-lg font-bold text-navy">{title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-body">{text}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -195,14 +210,16 @@ export default function About() {
             title="Trusted Partners"
             subtitle="We partner with leading global brands for premium quality"
           />
-          <div className="mt-10 overflow-hidden rounded-3xl bg-accent-light/40 p-4 shadow-md shadow-gray-200 sm:p-8">
-            <img
-              src={IMG.partners}
-              alt="SunSaviour and Anicsun trusted partners banner"
-              loading="lazy"
-              className="h-auto w-full rounded-2xl object-contain"
-            />
-          </div>
+          <Reveal variant="zoom" delay={100}>
+            <div className="group mt-10 overflow-hidden rounded-3xl bg-accent-light/40 p-4 shadow-md shadow-gray-200 sm:p-8">
+              <img
+                src={IMG.partners}
+                alt="SunSaviour and Anicsun trusted partners banner"
+                loading="lazy"
+                className="h-auto w-full rounded-2xl object-contain transition duration-700 group-hover:scale-105"
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
 

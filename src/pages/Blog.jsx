@@ -3,6 +3,7 @@ import { CalendarDays, ArrowRight, ArrowUpRight } from 'lucide-react'
 import PageBanner from '../components/PageBanner'
 import SectionHeading from '../components/SectionHeading'
 import CtaBanner from '../components/CtaBanner'
+import Reveal from '../components/Reveal'
 
 const IMG = {
   featured:
@@ -85,43 +86,45 @@ export default function Blog() {
 
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-          <Link
-            to="/blog"
-            className="group grid overflow-hidden rounded-3xl bg-white shadow-md shadow-gray-200 transition hover:-translate-y-1 hover:shadow-xl lg:grid-cols-2"
-          >
-            <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto">
-              <img
-                src={featured.image}
-                alt={featured.title}
-                loading="lazy"
-                className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-              />
-            </div>
-            <div className="flex flex-col justify-center p-8 lg:p-12">
-              <div className="flex flex-wrap items-center gap-3 text-xs">
-                <span className="rounded-full bg-cta px-3 py-1 font-bold uppercase tracking-wide text-white">
-                  Featured
-                </span>
-                <span className="rounded-full bg-accent-light px-3 py-1 font-semibold text-navy">
-                  {featured.category}
-                </span>
-                <span className="inline-flex items-center gap-1.5 text-body">
-                  <CalendarDays size={13} />
-                  {featured.date}
+          <Reveal variant="zoom">
+            <Link
+              to="/blog"
+              className="group grid overflow-hidden rounded-3xl bg-white shadow-md shadow-gray-200 transition duration-300 hover:-translate-y-2 hover:shadow-xl lg:grid-cols-2"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto">
+                <img
+                  src={featured.image}
+                  alt={featured.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                />
+              </div>
+              <div className="flex flex-col justify-center p-8 lg:p-12">
+                <div className="flex flex-wrap items-center gap-3 text-xs">
+                  <span className="rounded-full bg-cta px-3 py-1 font-bold uppercase tracking-wide text-white">
+                    Featured
+                  </span>
+                  <span className="rounded-full bg-accent-light px-3 py-1 font-semibold text-navy">
+                    {featured.category}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-body">
+                    <CalendarDays size={13} />
+                    {featured.date}
+                  </span>
+                </div>
+                <h2 className="mt-4 text-2xl font-extrabold text-navy sm:text-3xl">
+                  {featured.title}
+                </h2>
+                <p className="mt-4 leading-relaxed text-body">
+                  {featured.excerpt}
+                </p>
+                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-cta transition group-hover:gap-2.5">
+                  Read Full Article
+                  <ArrowRight size={15} />
                 </span>
               </div>
-              <h2 className="mt-4 text-2xl font-extrabold text-navy sm:text-3xl">
-                {featured.title}
-              </h2>
-              <p className="mt-4 leading-relaxed text-body">
-                {featured.excerpt}
-              </p>
-              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-cta transition group-hover:gap-2.5">
-                Read Full Article
-                <ArrowRight size={15} />
-              </span>
-            </div>
-          </Link>
+            </Link>
+          </Reveal>
         </div>
       </section>
 
@@ -132,19 +135,17 @@ export default function Blog() {
             subtitle="Fresh insights from our solar experts"
           />
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {posts.map(({ title, excerpt, category, date, image }) => (
-              <article
-                key={title}
-                className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200 transition hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img
-                    src={image}
-                    alt={title}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition duration-300 group-hover:scale-110"
-                  />
-                </div>
+            {posts.map(({ title, excerpt, category, date, image }, i) => (
+              <Reveal key={title} variant="up" delay={(i % 3) * 130}>
+                <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+                  <div className="aspect-[16/10] overflow-hidden">
+                    <img
+                      src={image}
+                      alt={title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-115"
+                    />
+                  </div>
                 <div className="flex flex-1 flex-col p-6">
                   <div className="flex items-center justify-between text-xs">
                     <span className="rounded-full bg-accent-light px-3 py-1 font-semibold text-navy">
@@ -170,6 +171,7 @@ export default function Blog() {
                   </Link>
                 </div>
               </article>
+              </Reveal>
             ))}
           </div>
         </div>

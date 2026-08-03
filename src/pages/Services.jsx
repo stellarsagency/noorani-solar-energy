@@ -13,6 +13,7 @@ import {
 import PageBanner from '../components/PageBanner'
 import SectionHeading from '../components/SectionHeading'
 import CtaBanner from '../components/CtaBanner'
+import Reveal from '../components/Reveal'
 
 const services = [
   {
@@ -83,44 +84,46 @@ export default function Services() {
             subtitle="Everything you need for clean, reliable solar energy"
           />
           <div className="mt-12 grid gap-8 sm:grid-cols-2">
-            {services.map(({ icon: Icon, title, text, points }) => (
-              <div
-                key={title}
-                className="group rounded-3xl border border-gray-100 bg-white p-8 shadow-md shadow-gray-100 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-200"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-accent-light text-cta transition group-hover:bg-cta group-hover:text-white">
-                    <Icon size={26} />
-                  </span>
-                  <h3 className="text-xl font-bold text-navy">{title}</h3>
+            {services.map(({ icon: Icon, title, text, points }, i) => (
+              <Reveal key={title} variant="up" delay={(i % 2) * 140}>
+                <div className="group relative h-full overflow-hidden rounded-3xl border border-gray-100 bg-white p-8 shadow-md shadow-gray-100 transition duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-gray-200">
+                  <span className="absolute right-0 top-0 size-32 translate-x-10 -translate-y-10 rounded-full bg-accent-light/50 transition duration-500 group-hover:translate-x-0 group-hover:translate-y-0" />
+                  <div className="relative flex items-center gap-4">
+                    <span className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-accent-light text-cta transition duration-300 group-hover:scale-110 group-hover:bg-cta group-hover:text-white">
+                      <Icon size={26} />
+                    </span>
+                    <h3 className="text-xl font-bold text-navy">{title}</h3>
+                  </div>
+                  <p className="mt-5 leading-relaxed text-body">{text}</p>
+                  <ul className="mt-5 space-y-2.5">
+                    {points.map((point) => (
+                      <li
+                        key={point}
+                        className="flex items-center gap-2.5 text-sm text-ink"
+                      >
+                        <CheckCircle2 size={16} className="shrink-0 text-cta" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    to="/contact"
+                    className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-cta transition hover:gap-2.5"
+                  >
+                    Get Started
+                    <ArrowRight size={15} />
+                  </Link>
                 </div>
-                <p className="mt-5 leading-relaxed text-body">{text}</p>
-                <ul className="mt-5 space-y-2.5">
-                  {points.map((point) => (
-                    <li
-                      key={point}
-                      className="flex items-center gap-2.5 text-sm text-ink"
-                    >
-                      <CheckCircle2 size={16} className="shrink-0 text-cta" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  to="/contact"
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-cta transition hover:gap-2.5"
-                >
-                  Get Started
-                  <ArrowRight size={15} />
-                </Link>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-navy">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <section className="relative overflow-hidden bg-navy">
+        <div className="animate-drift absolute -right-10 -top-10 size-56 rounded-full bg-cta/20 blur-3xl" />
+        <div className="animate-drift absolute -bottom-16 -left-8 size-64 rounded-full bg-accent-light/10 blur-3xl" style={{ animationDelay: '-9s' }} />
+        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
               How It Works
@@ -136,21 +139,23 @@ export default function Services() {
           </div>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map(({ icon: Icon, step, title, text }, i) => (
-              <div key={step} className="relative">
-                {i < steps.length - 1 && (
-                  <span className="absolute left-16 top-8 hidden h-0.5 w-[calc(100%-4rem)] bg-white/20 lg:block" />
-                )}
-                <span className="relative z-10 flex size-16 items-center justify-center rounded-2xl bg-cta text-white shadow-lg shadow-cta/30">
-                  <Icon size={28} />
-                </span>
-                <p className="mt-5 text-sm font-bold uppercase tracking-widest text-cta">
-                  Step {step}
-                </p>
-                <h3 className="mt-1 text-lg font-bold text-white">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/60">
-                  {text}
-                </p>
-              </div>
+              <Reveal key={step} variant="up" delay={i * 150}>
+                <div className="relative group">
+                  {i < steps.length - 1 && (
+                    <span className="absolute left-16 top-8 hidden h-0.5 w-[calc(100%-4rem)] bg-gradient-to-r from-cta/60 to-white/20 lg:block" />
+                  )}
+                  <span className="relative z-10 flex size-16 items-center justify-center rounded-2xl bg-cta text-white shadow-lg shadow-cta/30 transition duration-300 group-hover:scale-110 group-hover:rotate-6">
+                    <Icon size={28} />
+                  </span>
+                  <p className="mt-5 text-sm font-bold uppercase tracking-widest text-cta">
+                    Step {step}
+                  </p>
+                  <h3 className="mt-1 text-lg font-bold text-white">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/60">
+                    {text}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>

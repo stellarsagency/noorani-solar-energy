@@ -6,6 +6,7 @@ import {
   LinkedinIcon,
   YoutubeIcon,
 } from './SocialIcons'
+import Reveal from './Reveal'
 import logo from '../assets/logo.png'
 
 const quickLinks = [
@@ -36,7 +37,7 @@ export default function Footer() {
   return (
     <footer className="bg-navy text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
-        <div>
+        <Reveal variant="up">
           <Link to="/" className="inline-flex">
             <img
               src={logo}
@@ -54,15 +55,15 @@ export default function Footer() {
                 key={label}
                 href="#"
                 aria-label={label}
-                className="flex size-9 items-center justify-center rounded-full border border-white/20 text-white/80 transition hover:border-cta hover:bg-cta hover:text-white"
+                className="flex size-9 items-center justify-center rounded-full border border-white/20 text-white/80 transition hover:-translate-y-1 hover:border-cta hover:bg-cta hover:text-white"
               >
                 <Icon width={16} height={16} />
               </a>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <div>
+        <Reveal variant="up" delay={120}>
           <h3 className="text-base font-bold uppercase tracking-wider">
             Quick Links
           </h3>
@@ -78,9 +79,9 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
 
-        <div>
+        <Reveal variant="up" delay={240}>
           <h3 className="text-base font-bold uppercase tracking-wider">
             Our Products
           </h3>
@@ -96,9 +97,9 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
 
-        <div>
+        <Reveal variant="up" delay={360}>
           <h3 className="text-base font-bold uppercase tracking-wider">
             Contact Us
           </h3>
@@ -141,7 +142,7 @@ export default function Footer() {
               <Send size={14} />
             </button>
           </form>
-        </div>
+        </Reveal>
       </div>
 
       <div className="border-t border-white/10">

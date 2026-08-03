@@ -22,22 +22,28 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
-        <Link to="/" className="flex shrink-0 items-center" onClick={close}>
+        <Link
+          to="/"
+          className="flex shrink-0 items-center"
+          onClick={close}
+          style={{ animationDelay: '0.05s' }}
+        >
           <img
             src={logo}
             alt="ElecSun Solar Energy logo"
-            className="h-12 w-auto max-w-[11rem] object-contain sm:h-16 sm:max-w-[15rem] lg:h-20"
+            className="hero-anim h-12 w-auto max-w-[11rem] object-contain sm:h-16 sm:max-w-[15rem] lg:h-20"
           />
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">
-          {navLinks.map((link) => (
+          {navLinks.map((link, i) => (
             <NavLink
               key={link.to}
               to={link.to}
+              style={{ animationDelay: `${0.12 + i * 0.06}s` }}
               className={({ isActive }) =>
-                `text-sm font-medium transition hover:text-cta ${
-                  isActive ? 'text-cta' : 'text-ink'
+                `hero-anim nav-underline text-sm font-medium transition hover:text-cta ${
+                  isActive ? 'is-active text-cta' : 'text-ink'
                 }`
               }
             >
@@ -49,7 +55,8 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <Link
             to="/contact"
-            className="hidden items-center gap-2 rounded-full bg-cta px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-cta/30 transition hover:bg-cta-dark sm:inline-flex"
+            style={{ animationDelay: '0.6s' }}
+            className="hero-anim shine-btn hidden items-center gap-2 rounded-full bg-cta px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-cta/30 transition hover:bg-cta-dark sm:inline-flex"
           >
             Get a Quote
             <ArrowRight size={16} />

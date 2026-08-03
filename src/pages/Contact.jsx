@@ -9,6 +9,7 @@ import {
 } from 'lucide-react'
 import PageBanner from '../components/PageBanner'
 import SectionHeading from '../components/SectionHeading'
+import Reveal from '../components/Reveal'
 
 const contactCards = [
   {
@@ -48,31 +49,30 @@ export default function Contact() {
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {contactCards.map(({ icon: Icon, title, lines, href }) => (
-              <div
-                key={title}
-                className="group rounded-2xl bg-white p-7 text-center shadow-md shadow-gray-200 transition hover:-translate-y-1 hover:shadow-xl"
-              >
-                <span className="mx-auto flex size-14 items-center justify-center rounded-full bg-accent-light text-cta transition group-hover:bg-cta group-hover:text-white">
-                  <Icon size={26} />
-                </span>
-                <h3 className="mt-5 text-lg font-bold text-navy">{title}</h3>
-                {lines.map((line) =>
-                  href ? (
-                    <a
-                      key={line}
-                      href={href}
-                      className="mt-2 block text-sm text-body transition hover:text-cta"
-                    >
-                      {line}
-                    </a>
-                  ) : (
-                    <p key={line} className="mt-2 text-sm text-body">
-                      {line}
-                    </p>
-                  ),
-                )}
-              </div>
+            {contactCards.map(({ icon: Icon, title, lines, href }, i) => (
+              <Reveal key={title} variant="up" delay={i * 120}>
+                <div className="group h-full rounded-2xl bg-white p-7 text-center shadow-md shadow-gray-200 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+                  <span className="mx-auto flex size-14 items-center justify-center rounded-full bg-accent-light text-cta transition duration-300 group-hover:scale-110 group-hover:bg-cta group-hover:text-white">
+                    <Icon size={26} />
+                  </span>
+                  <h3 className="mt-5 text-lg font-bold text-navy">{title}</h3>
+                  {lines.map((line) =>
+                    href ? (
+                      <a
+                        key={line}
+                        href={href}
+                        className="mt-2 block text-sm text-body transition hover:text-cta"
+                      >
+                        {line}
+                      </a>
+                    ) : (
+                      <p key={line} className="mt-2 text-sm text-body">
+                        {line}
+                      </p>
+                    ),
+                  )}
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -87,7 +87,7 @@ export default function Contact() {
                 subtitle="We usually reply within one working day"
               />
               {sent ? (
-                <div className="mt-10 flex flex-col items-center rounded-3xl bg-white p-10 text-center shadow-md shadow-gray-200">
+                <div className="animate-pop-in mt-10 flex flex-col items-center rounded-3xl bg-white p-10 text-center shadow-md shadow-gray-200">
                   <span className="flex size-16 items-center justify-center rounded-full bg-cta text-white">
                     <CheckCircle2 size={32} />
                   </span>
@@ -107,6 +107,7 @@ export default function Contact() {
                   </button>
                 </div>
               ) : (
+                <Reveal variant="up" delay={100}>
                 <form
                   className="mt-10 space-y-5"
                   onSubmit={(e) => {
@@ -127,7 +128,7 @@ export default function Contact() {
                         type="text"
                         required
                         placeholder="Your name"
-                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-ink placeholder:text-gray-400 focus:border-cta focus:outline-none focus:ring-2 focus:ring-cta/20"
+                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-ink transition placeholder:text-gray-400 focus:border-cta focus:outline-none focus:ring-2 focus:ring-cta/20"
                       />
                     </div>
                     <div>
@@ -142,7 +143,7 @@ export default function Contact() {
                         type="email"
                         required
                         placeholder="you@example.com"
-                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-ink placeholder:text-gray-400 focus:border-cta focus:outline-none focus:ring-2 focus:ring-cta/20"
+                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-ink transition placeholder:text-gray-400 focus:border-cta focus:outline-none focus:ring-2 focus:ring-cta/20"
                       />
                     </div>
                   </div>
@@ -158,7 +159,7 @@ export default function Contact() {
                         id="phone"
                         type="tel"
                         placeholder="03XX-XXXXXXX"
-                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-ink placeholder:text-gray-400 focus:border-cta focus:outline-none focus:ring-2 focus:ring-cta/20"
+                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-ink transition placeholder:text-gray-400 focus:border-cta focus:outline-none focus:ring-2 focus:ring-cta/20"
                       />
                     </div>
                     <div>
@@ -170,7 +171,7 @@ export default function Contact() {
                       </label>
                       <select
                         id="service"
-                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-ink focus:border-cta focus:outline-none focus:ring-2 focus:ring-cta/20"
+                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-ink transition focus:border-cta focus:outline-none focus:ring-2 focus:ring-cta/20"
                       >
                         <option>Solar Installation</option>
                         <option>Energy Storage / Batteries</option>
@@ -192,28 +193,31 @@ export default function Contact() {
                       rows="5"
                       required
                       placeholder="Tell us about your project..."
-                      className="w-full resize-none rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-ink placeholder:text-gray-400 focus:border-cta focus:outline-none focus:ring-2 focus:ring-cta/20"
+                      className="w-full resize-none rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-ink transition placeholder:text-gray-400 focus:border-cta focus:outline-none focus:ring-2 focus:ring-cta/20"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 rounded-full bg-cta px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cta/30 transition hover:bg-cta-dark"
+                    className="shine-btn inline-flex items-center gap-2 rounded-full bg-cta px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cta/30 transition hover:bg-cta-dark"
                   >
                     Send Message
                     <Send size={16} />
                   </button>
                 </form>
+                </Reveal>
               )}
             </div>
 
-            <div className="overflow-hidden rounded-3xl bg-white p-3 shadow-md shadow-gray-200">
-              <iframe
-                title="ElecSun Solar Energy location - Kharian, Pakistan"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=73.79%2C32.26%2C73.92%2C32.31&layer=mapnik&marker=32.2828%2C73.8550"
-                className="h-80 w-full rounded-2xl border-0 sm:h-full sm:min-h-[28rem]"
-                loading="lazy"
-              />
-            </div>
+            <Reveal variant="right" delay={150}>
+              <div className="group h-full overflow-hidden rounded-3xl bg-white p-3 shadow-md shadow-gray-200">
+                <iframe
+                  title="ElecSun Solar Energy location - Kharian, Pakistan"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=73.79%2C32.26%2C73.92%2C32.31&layer=mapnik&marker=32.2828%2C73.8550"
+                  className="h-80 w-full rounded-2xl border-0 sm:h-full sm:min-h-[28rem]"
+                  loading="lazy"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

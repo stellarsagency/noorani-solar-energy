@@ -10,6 +10,7 @@ import {
 import PageBanner from '../components/PageBanner'
 import SectionHeading from '../components/SectionHeading'
 import CtaBanner from '../components/CtaBanner'
+import Reveal from '../components/Reveal'
 
 const IMG = {
   panels:
@@ -95,19 +96,17 @@ export default function Products() {
             subtitle="Everything your solar system needs, under one roof"
           />
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map(({ title, image, desc, specs }) => (
-              <div
-                key={title}
-                className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200 transition hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className="aspect-[3/2] overflow-hidden">
-                  <img
-                    src={image}
-                    alt={title}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition duration-300 group-hover:scale-110"
-                  />
-                </div>
+            {products.map(({ title, image, desc, specs }, i) => (
+              <Reveal key={title} variant="up" delay={(i % 3) * 130}>
+                <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+                  <div className="aspect-[3/2] overflow-hidden">
+                    <img
+                      src={image}
+                      alt={title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-115"
+                    />
+                  </div>
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-lg font-bold text-navy">{title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-body">
@@ -142,24 +141,27 @@ export default function Products() {
                   </div>
                 </div>
               </div>
+              </Reveal>
             ))}
 
-            <div className="flex flex-col items-center justify-center rounded-2xl bg-navy p-8 text-center text-white">
-              <h3 className="text-2xl font-extrabold">
-                Need a Custom Solution?
-              </h3>
-              <p className="mt-3 text-sm text-white/70">
-                Tell us your energy needs and our engineers will design the
-                perfect system for you.
-              </p>
-              <Link
-                to="/contact"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-cta px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-cta-dark"
-              >
-                Talk to an Expert
-                <ArrowRight size={15} />
-              </Link>
-            </div>
+            <Reveal variant="up" delay={260}>
+              <div className="group flex h-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-navy p-8 text-center text-white transition duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-navy/30">
+                <h3 className="text-2xl font-extrabold">
+                  Need a Custom Solution?
+                </h3>
+                <p className="mt-3 text-sm text-white/70">
+                  Tell us your energy needs and our engineers will design the
+                  perfect system for you.
+                </p>
+                <Link
+                  to="/contact"
+                  className="shine-btn mt-6 inline-flex items-center gap-2 rounded-full bg-cta px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-cta-dark"
+                >
+                  Talk to an Expert
+                  <ArrowRight size={15} />
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -171,17 +173,16 @@ export default function Products() {
             subtitle="Quality you can trust, support you can rely on"
           />
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {guarantees.map(({ icon: Icon, title, text }) => (
-              <div
-                key={title}
-                className="group rounded-2xl bg-white p-7 text-center shadow-md shadow-gray-200 transition hover:-translate-y-1 hover:shadow-xl"
-              >
-                <span className="mx-auto flex size-14 items-center justify-center rounded-full bg-accent-light text-cta transition group-hover:bg-cta group-hover:text-white">
-                  <Icon size={26} />
-                </span>
-                <h3 className="mt-5 text-lg font-bold text-navy">{title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-body">{text}</p>
-              </div>
+            {guarantees.map(({ icon: Icon, title, text }, i) => (
+              <Reveal key={title} variant="up" delay={i * 120}>
+                <div className="group h-full rounded-2xl bg-white p-7 text-center shadow-md shadow-gray-200 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+                  <span className="relative mx-auto flex size-14 items-center justify-center rounded-full bg-accent-light text-cta transition duration-300 group-hover:scale-110 group-hover:bg-cta group-hover:text-white">
+                    <Icon size={26} />
+                  </span>
+                  <h3 className="mt-5 text-lg font-bold text-navy">{title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-body">{text}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>

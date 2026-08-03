@@ -10,9 +10,12 @@ import {
   ArrowUpRight,
   BadgeCheck,
   Leaf,
+  Zap,
 } from 'lucide-react'
 import SectionHeading from '../components/SectionHeading'
 import CtaBanner from '../components/CtaBanner'
+import Reveal from '../components/Reveal'
+import CountUp from '../components/CountUp'
 
 const heroBg =
   'https://images.unsplash.com/photo-1686164748327-f659bf9cdba0?auto=format&fit=crop&w=1920&q=80'
@@ -120,41 +123,75 @@ export default function Home() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-navy">
       <img
         src={heroBg}
         alt="House with solar panels on the roof"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="animate-ken-burns absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/25" />
+      <div className="animate-drift absolute -left-24 top-16 size-72 rounded-full bg-cta/15 blur-3xl" />
+      <div
+        className="animate-drift absolute bottom-8 right-[10%] size-80 rounded-full bg-accent-light/40 blur-3xl"
+        style={{ animationDelay: '-7s' }}
+      />
       <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-36 lg:px-8">
         <div className="max-w-2xl">
-          <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-cta">
+          <p
+            className="hero-anim flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-cta"
+            style={{ animationDelay: '0.1s' }}
+          >
             <span className="h-px w-10 bg-cta" />
             Powering a Brighter Tomorrow
           </p>
-          <h1 className="mt-4 text-4xl font-extrabold leading-tight text-navy sm:text-5xl lg:text-6xl">
+          <h1
+            className="hero-anim mt-4 text-4xl font-extrabold leading-tight text-navy sm:text-5xl lg:text-6xl"
+            style={{ animationDelay: '0.25s' }}
+          >
             Smart Solar
-            <span className="block text-cta">Better Tomorrow</span>
+            <span className="text-gradient-shimmer block">Better Tomorrow</span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-body">
+          <p
+            className="hero-anim mt-6 max-w-xl text-lg leading-relaxed text-body"
+            style={{ animationDelay: '0.4s' }}
+          >
             ElecSun Solar Energy provides reliable, efficient and sustainable
             solar solutions for homes, businesses and industries.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div
+            className="hero-anim mt-8 flex flex-wrap gap-4"
+            style={{ animationDelay: '0.55s' }}
+          >
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 rounded-full bg-cta px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cta/30 transition hover:bg-cta-dark"
+              className="shine-btn inline-flex items-center gap-2 rounded-full bg-cta px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cta/30 transition hover:bg-cta-dark"
             >
               Explore Solutions
               <ArrowRight size={16} />
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-navy px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-navy/30 transition hover:bg-navy-light"
+              className="shine-btn inline-flex items-center gap-2 rounded-full bg-navy px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-navy/30 transition hover:bg-navy-light"
             >
               Get a Quote
             </Link>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="hero-anim absolute bottom-10 right-10 hidden animate-float rounded-2xl bg-white/95 px-5 py-4 shadow-2xl shadow-navy/20 backdrop-blur lg:block"
+        style={{ animationDelay: '0.8s' }}
+      >
+        <div className="flex items-center gap-3">
+          <span className="flex size-11 items-center justify-center rounded-full bg-accent-light text-cta">
+            <Zap size={20} />
+          </span>
+          <div>
+            <p className="text-lg font-extrabold text-navy">-70%</p>
+            <p className="text-xs font-semibold text-body">
+              Cut Your Electricity Bill
+            </p>
           </div>
         </div>
       </div>
@@ -164,20 +201,24 @@ function Hero() {
 
 function FeatureStrip() {
   return (
-    <section>
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 rounded-3xl bg-navy px-4 py-10 sm:grid-cols-2 sm:gap-8 sm:px-8 sm:py-12 lg:grid-cols-4 lg:px-10">
-        {features.map(({ icon: Icon, title, text }) => (
-          <div key={title + text} className="flex items-center gap-3 sm:gap-4">
-            <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-accent-light text-cta sm:size-14">
-              <Icon size={22} className="sm:size-[26px]" />
-            </span>
-            <div>
-              <h3 className="text-sm font-bold text-white sm:text-base">
-                {title}
-              </h3>
-              <p className="text-xs text-white/60 sm:text-sm">{text}</p>
+    <section className="relative z-10 -mt-10 px-4 sm:-mt-14">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 rounded-3xl bg-navy px-4 py-10 shadow-2xl shadow-navy/30 sm:grid-cols-2 sm:gap-8 sm:px-8 sm:py-12 lg:grid-cols-4 lg:px-10">
+        {features.map(({ icon: Icon, title, text }, i) => (
+          <Reveal key={title + text} variant="up" delay={i * 120} className="h-full">
+            <div className="flex h-full items-center gap-3 sm:gap-4">
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-accent-light text-cta transition duration-300 group-hover:scale-110 group-hover:bg-cta group-hover:text-white sm:size-14">
+                <Icon size={22} className="sm:size-[26px]" />
+              </span>
+              <div className="flex min-h-[3rem] flex-col justify-center sm:min-h-[3.5rem]">
+                <h3 className="text-sm font-bold leading-tight text-white sm:text-base">
+                  {title}
+                </h3>
+                <p className="mt-0.5 text-xs leading-snug text-white/60 sm:text-sm">
+                  {text}
+                </p>
+              </div>
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>
@@ -193,24 +234,24 @@ function Services() {
           subtitle="Everything you need for clean, reliable solar energy"
         />
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map(({ icon: Icon, title, text }) => (
-            <div
-              key={title}
-              className="group rounded-2xl border border-gray-100 bg-white p-7 shadow-md shadow-gray-100 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-200"
-            >
-              <span className="flex size-14 items-center justify-center rounded-xl bg-accent-light text-cta transition group-hover:bg-cta group-hover:text-white">
-                <Icon size={26} />
-              </span>
-              <h3 className="mt-5 text-lg font-bold text-navy">{title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-body">{text}</p>
-              <Link
-                to="/services"
-                className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-cta transition hover:gap-2.5"
-              >
-                Learn More
-                <ArrowRight size={15} />
-              </Link>
-            </div>
+          {services.map(({ icon: Icon, title, text }, i) => (
+            <Reveal key={title} variant="up" delay={i * 120} className="h-full">
+              <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white p-7 shadow-md shadow-gray-100 transition duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-gray-200">
+                <span className="absolute right-0 top-0 size-24 translate-x-8 -translate-y-8 rounded-full bg-accent-light/50 transition duration-500 group-hover:translate-x-0 group-hover:translate-y-0" />
+                <span className="relative flex size-14 items-center justify-center rounded-xl bg-accent-light text-cta transition duration-300 group-hover:scale-110 group-hover:bg-cta group-hover:text-white">
+                  <Icon size={26} />
+                </span>
+                <h3 className="mt-5 text-lg font-bold text-navy">{title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-body">{text}</p>
+                <Link
+                  to="/services"
+                  className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-cta transition hover:gap-2.5"
+                >
+                  Learn More
+                  <ArrowRight size={15} />
+                </Link>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -227,30 +268,29 @@ function Products() {
           subtitle="Premium equipment for maximum solar performance"
         />
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map(({ title, image }) => (
-            <div
-              key={title}
-              className="group overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200 transition hover:-translate-y-1 hover:shadow-xl"
-            >
-              <div className="aspect-[3/2] overflow-hidden">
-                <img
-                  src={image}
-                  alt={title}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition duration-300 group-hover:scale-110"
-                />
+          {products.map(({ title, image }, i) => (
+            <Reveal key={title} variant="up" delay={i * 120} className="h-full">
+              <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div className="aspect-[3/2] overflow-hidden">
+                  <img
+                    src={image}
+                    alt={title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col justify-center p-6">
+                  <h3 className="text-lg font-bold text-navy">{title}</h3>
+                  <Link
+                    to="/products"
+                    className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-cta transition hover:gap-2.5"
+                  >
+                    View Details
+                    <ArrowUpRight size={15} />
+                  </Link>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold text-navy">{title}</h3>
-                <Link
-                  to="/products"
-                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-cta transition hover:gap-2.5"
-                >
-                  View Details
-                  <ArrowUpRight size={15} />
-                </Link>
-              </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -262,7 +302,7 @@ function About() {
   return (
     <section className="bg-white">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:px-8">
-        <div>
+        <Reveal variant="left">
           <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-cta">
             <span className="h-px w-10 bg-cta" />
             Who We Are
@@ -283,36 +323,48 @@ function About() {
             greener future.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            {badges.map(({ icon: Icon, label }) => (
+            {badges.map(({ icon: Icon, label }, i) => (
               <span
                 key={label}
-                className="inline-flex items-center gap-2 rounded-full bg-accent-light px-4 py-2 text-sm font-semibold text-navy"
+                className="animate-pop-in inline-flex items-center gap-2 rounded-full bg-accent-light px-4 py-2 text-sm font-semibold text-navy transition hover:-translate-y-0.5 hover:bg-cta hover:text-white"
+                style={{ animationDelay: `${0.3 + i * 0.15}s` }}
               >
-                <Icon size={16} className="text-cta" />
+                <Icon size={16} className="text-cta transition group-hover:text-white" />
                 {label}
               </span>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <div className="relative">
-          <img
-            src={aboutBg}
-            alt="Solar panels at sunset"
-            loading="lazy"
-            className="h-80 w-full rounded-3xl object-cover sm:h-[26rem]"
-          />
-          <div className="mt-6 rounded-3xl bg-navy p-7 sm:absolute sm:-bottom-8 sm:left-6 sm:right-6 sm:mt-0 sm:shadow-2xl sm:shadow-navy/40 lg:left-10 lg:right-10">
-            <div className="grid grid-cols-2 gap-6">
-              {stats.map(({ value, label }) => (
-                <div key={label}>
-                  <p className="text-3xl font-extrabold text-cta">{value}</p>
-                  <p className="mt-1 text-sm text-white/70">{label}</p>
-                </div>
-              ))}
+        <Reveal variant="right" delay={150}>
+          <div className="relative">
+            <img
+              src={aboutBg}
+              alt="Solar panels at sunset"
+              loading="lazy"
+              className="h-80 w-full rounded-3xl object-cover sm:h-[26rem]"
+            />
+            <div className="animate-float absolute -right-3 -top-3 hidden rounded-2xl bg-cta px-5 py-3 shadow-xl shadow-cta/40 sm:block">
+              <p className="text-2xl font-extrabold text-white">10+</p>
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-white/85">
+                Years Experience
+              </p>
+            </div>
+            <div className="mt-6 rounded-3xl bg-navy p-7 sm:absolute sm:-bottom-8 sm:left-6 sm:right-6 sm:mt-0 sm:shadow-2xl sm:shadow-navy/40 lg:left-10 lg:right-10">
+              <div className="grid grid-cols-2 gap-6">
+                {stats.map(({ value, label }) => (
+                  <div key={label}>
+                    <CountUp
+                      value={value}
+                      className="text-3xl font-extrabold text-cta"
+                    />
+                    <p className="mt-1 text-sm text-white/70">{label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   )
@@ -326,14 +378,16 @@ function TrustedPartners() {
           title="Trusted Partners"
           subtitle="We partner with leading global brands for premium quality"
         />
-        <div className="mt-10 overflow-hidden rounded-3xl bg-accent-light/40 p-4 shadow-md shadow-gray-200 sm:p-8">
-          <img
-            src={partnersBanner}
-            alt="SunSaviour and Anicsun trusted partners banner"
-            loading="lazy"
-            className="h-auto w-full rounded-2xl object-contain"
-          />
-        </div>
+        <Reveal variant="zoom" delay={100}>
+          <div className="group mt-10 overflow-hidden rounded-3xl bg-accent-light/40 p-4 shadow-md shadow-gray-200 sm:p-8">
+            <img
+              src={partnersBanner}
+              alt="SunSaviour and Anicsun trusted partners banner"
+              loading="lazy"
+              className="h-auto w-full rounded-2xl object-contain transition duration-700 group-hover:scale-105"
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
   )
