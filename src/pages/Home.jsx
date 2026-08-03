@@ -267,19 +267,19 @@ function Products() {
           title="Our Products"
           subtitle="Premium equipment for maximum solar performance"
         />
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
           {products.map(({ title, image }, i) => (
             <Reveal key={title} variant="up" delay={i * 120} className="h-full">
               <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <div className="aspect-[3/2] overflow-hidden">
+                <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-gray-50 p-4">
                   <img
                     src={image}
                     alt={title}
                     loading="lazy"
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                    className="h-full w-full object-contain transition duration-700 group-hover:scale-105"
                   />
                 </div>
-                <div className="flex flex-1 flex-col justify-center p-6">
+                <div className="flex flex-1 flex-col justify-center p-5 sm:p-6">
                   <h3 className="text-lg font-bold text-navy">{title}</h3>
                   <Link
                     to="/products"

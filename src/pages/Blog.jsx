@@ -52,6 +52,7 @@ const posts = [
     category: 'Storage',
     date: 'July 5, 2026',
     image: IMG.battery,
+    product: true,
   },
   {
     title: 'Solar Maintenance Checklist for Summer',
@@ -66,6 +67,7 @@ const posts = [
     category: 'Technology',
     date: 'June 18, 2026',
     image: IMG.inverter,
+    product: true,
   },
   {
     title: 'Government Incentives for Solar Energy',
@@ -135,15 +137,25 @@ export default function Blog() {
             subtitle="Fresh insights from our solar experts"
           />
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {posts.map(({ title, excerpt, category, date, image }, i) => (
+            {posts.map(({ title, excerpt, category, date, image, product }, i) => (
               <Reveal key={title} variant="up" delay={(i % 3) * 130}>
                 <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
-                  <div className="aspect-[16/10] overflow-hidden">
+                  <div
+                    className={
+                      product
+                        ? 'flex aspect-[16/10] items-center justify-center overflow-hidden bg-gray-50 p-4'
+                        : 'aspect-[16/10] overflow-hidden'
+                    }
+                  >
                     <img
                       src={image}
                       alt={title}
                       loading="lazy"
-                      className="h-full w-full object-cover transition duration-700 group-hover:scale-115"
+                      className={
+                        product
+                          ? 'h-full w-full object-contain transition duration-700 group-hover:scale-105'
+                          : 'h-full w-full object-cover transition duration-700 group-hover:scale-115'
+                      }
                     />
                   </div>
                 <div className="flex flex-1 flex-col p-6">

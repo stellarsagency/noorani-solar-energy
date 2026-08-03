@@ -95,19 +95,19 @@ export default function Products() {
             title="Our Product Range"
             subtitle="Everything your solar system needs, under one roof"
           />
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
             {products.map(({ title, image, desc, specs }, i) => (
               <Reveal key={title} variant="up" delay={(i % 3) * 130}>
                 <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
-                  <div className="aspect-[3/2] overflow-hidden">
+                  <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-gray-50 p-4">
                     <img
                       src={image}
                       alt={title}
                       loading="lazy"
-                      className="h-full w-full object-cover transition duration-700 group-hover:scale-115"
+                      className="h-full w-full object-contain transition duration-700 group-hover:scale-105"
                     />
                   </div>
-                <div className="flex flex-1 flex-col p-6">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <h3 className="text-lg font-bold text-navy">{title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-body">
                     {desc}
