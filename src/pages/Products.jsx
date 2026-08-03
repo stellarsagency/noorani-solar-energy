@@ -11,14 +11,14 @@ import PageBanner from '../components/PageBanner'
 import SectionHeading from '../components/SectionHeading'
 import CtaBanner from '../components/CtaBanner'
 import Reveal from '../components/Reveal'
+import dualInverter from '../assets/Dual PV5500+ Pro.jpeg'
 
 const IMG = {
   panels:
     'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&h=600&q=80',
-  inverter:
-    'https://i.ibb.co/M5G0ZNc9/fgfgf.jpg',
+  inverter: dualInverter,
   battery:
-    'https://i.ibb.co/mrjjp3S7/Whats-App-Image-2026-08-02-at-12-48-52-PM.jpg',
+    'https://images.unsplash.com/photo-1742899273038-67ff67477663?fm=jpg&q=80&w=1200&auto=format&fit=crop',
   mounting:
     'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&h=600&q=80',
   accessories:

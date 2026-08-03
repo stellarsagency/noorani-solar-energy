@@ -4,6 +4,7 @@ import PageBanner from '../components/PageBanner'
 import SectionHeading from '../components/SectionHeading'
 import CtaBanner from '../components/CtaBanner'
 import Reveal from '../components/Reveal'
+import waInverter2 from '../assets/WhatsApp Image 2026-08-03 at 7.16.57 AM.jpeg'
 
 const IMG = {
   featured:
@@ -17,9 +18,8 @@ const IMG = {
   closeup:
     'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&h=600&q=80',
   battery:
-    'https://i.ibb.co/mrjjp3S7/Whats-App-Image-2026-08-02-at-12-48-52-PM.jpg',
-  inverter:
-    'https://i.ibb.co/M5G0ZNc9/fgfgf.jpg',
+    'https://images.unsplash.com/photo-1742899273038-67ff67477663?fm=jpg&q=80&w=1200&auto=format&fit=crop',
+  inverter: waInverter2,
 }
 
 const featured = {

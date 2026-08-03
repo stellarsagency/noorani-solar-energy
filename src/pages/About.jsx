@@ -17,11 +17,11 @@ import CountUp from '../components/CountUp'
 const IMG = {
   aboutMain:
     'https://i.ibb.co/Q15ZDN5/fgfg.jpg',
-  partners:
-    'https://i.ibb.co/RGQWC7pZ/Whats-App-Image-2026-08-02-at-12-52-19-PM.jpg',
   team:
     'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1000&q=80',
 }
+
+const partners = ['SunSaviour', 'Anicsun']
 
 const badges = [
   { icon: BadgeCheck, label: 'Premium Quality' },
@@ -211,13 +211,16 @@ export default function About() {
             subtitle="We partner with leading global brands for premium quality"
           />
           <Reveal variant="zoom" delay={100}>
-            <div className="group mt-10 overflow-hidden rounded-3xl bg-accent-light/40 p-4 shadow-md shadow-gray-200 sm:p-8">
-              <img
-                src={IMG.partners}
-                alt="SunSaviour and Anicsun trusted partners banner"
-                loading="lazy"
-                className="h-auto w-full rounded-2xl object-contain transition duration-700 group-hover:scale-105"
-              />
+            <div className="mx-auto mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-4 rounded-3xl bg-accent-light/40 px-6 py-10 shadow-md shadow-gray-200 sm:gap-6 sm:px-10">
+              {partners.map((name, i) => (
+                <span
+                  key={name}
+                  className="animate-pop-in rounded-2xl bg-white px-8 py-4 text-xl font-extrabold uppercase tracking-widest text-navy shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:text-cta sm:px-12 sm:text-2xl"
+                  style={{ animationDelay: `${0.2 + i * 0.2}s` }}
+                >
+                  {name}
+                </span>
+              ))}
             </div>
           </Reveal>
         </div>

@@ -16,16 +16,16 @@ import SectionHeading from '../components/SectionHeading'
 import CtaBanner from '../components/CtaBanner'
 import Reveal from '../components/Reveal'
 import CountUp from '../components/CountUp'
+import waInverter from '../assets/WhatsApp Image 2026-08-03 at 7.16.56 AM.jpeg'
 
 const heroBg =
   'https://images.unsplash.com/photo-1686164748327-f659bf9cdba0?auto=format&fit=crop&w=1920&q=80'
 const aboutBg =
   'https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1200&q=80'
-const partnersBanner =
-  'https://i.ibb.co/RGQWC7pZ/Whats-App-Image-2026-08-02-at-12-52-19-PM.jpg'
-const inverterImg = 'https://i.ibb.co/M5G0ZNc9/fgfgf.jpg'
 const batteryImg =
-  'https://i.ibb.co/mrjjp3S7/Whats-App-Image-2026-08-02-at-12-48-52-PM.jpg'
+  'https://images.unsplash.com/photo-1742899273038-67ff67477663?fm=jpg&q=80&w=1200&auto=format&fit=crop'
+
+const partners = ['SunSaviour', 'Anicsun']
 
 const features = [
   {
@@ -81,7 +81,7 @@ const products = [
   },
   {
     title: 'Solar Inverters',
-    image: inverterImg,
+    image: waInverter,
   },
   {
     title: 'Solar Batteries',
@@ -379,13 +379,16 @@ function TrustedPartners() {
           subtitle="We partner with leading global brands for premium quality"
         />
         <Reveal variant="zoom" delay={100}>
-          <div className="group mt-10 overflow-hidden rounded-3xl bg-accent-light/40 p-4 shadow-md shadow-gray-200 sm:p-8">
-            <img
-              src={partnersBanner}
-              alt="SunSaviour and Anicsun trusted partners banner"
-              loading="lazy"
-              className="h-auto w-full rounded-2xl object-contain transition duration-700 group-hover:scale-105"
-            />
+          <div className="mx-auto mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-4 rounded-3xl bg-accent-light/40 px-6 py-10 shadow-md shadow-gray-200 sm:gap-6 sm:px-10">
+            {partners.map((name, i) => (
+              <span
+                key={name}
+                className="animate-pop-in rounded-2xl bg-white px-8 py-4 text-xl font-extrabold uppercase tracking-widest text-navy shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:text-cta sm:px-12 sm:text-2xl"
+                style={{ animationDelay: `${0.2 + i * 0.2}s` }}
+              >
+                {name}
+              </span>
+            ))}
           </div>
         </Reveal>
       </div>
