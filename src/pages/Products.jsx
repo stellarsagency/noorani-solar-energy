@@ -145,21 +145,32 @@ export default function Products() {
             ))}
 
             <Reveal variant="up" delay={260}>
-              <div className="group flex h-full flex-col items-center justify-center overflow-hidden rounded-2xl bg-navy p-8 text-center text-white transition duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-navy/30">
-                <h3 className="text-2xl font-extrabold">
-                  Need a Custom Solution?
-                </h3>
-                <p className="mt-3 text-sm text-white/70">
-                  Tell us your energy needs and our engineers will design the
-                  perfect system for you.
-                </p>
-                <Link
-                  to="/contact"
-                  className="shine-btn mt-6 inline-flex items-center gap-2 rounded-full bg-cta px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-cta-dark"
-                >
-                  Talk to an Expert
-                  <ArrowRight size={15} />
-                </Link>
+              <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-md shadow-gray-200 transition duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-navy to-navy-light p-4">
+                  <span className="flex size-20 items-center justify-center rounded-full bg-white/10 text-cta">
+                    <Wrench size={36} />
+                  </span>
+                  <span className="animate-drift absolute -right-10 -top-10 size-36 rounded-full bg-cta/20 blur-2xl" />
+                  <span className="animate-drift absolute -bottom-10 -left-10 size-36 rounded-full bg-accent-light/20 blur-2xl" style={{ animationDelay: '-6s' }} />
+                </div>
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <h3 className="text-lg font-bold text-navy">
+                    Need a Custom Solution?
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-body">
+                    Tell us your energy needs and our engineers will design the
+                    perfect system for you.
+                  </p>
+                  <div className="mt-auto pt-6">
+                    <Link
+                      to="/contact"
+                      className="shine-btn inline-flex w-full items-center justify-center gap-2 rounded-full bg-cta px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-cta-dark"
+                    >
+                      Talk to an Expert
+                      <ArrowRight size={13} />
+                    </Link>
+                  </div>
+                </div>
               </div>
             </Reveal>
           </div>
