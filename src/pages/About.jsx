@@ -15,10 +15,7 @@ import Reveal from '../components/Reveal'
 import CountUp from '../components/CountUp'
 
 const IMG = {
-  aboutMain:
-    'https://i.ibb.co/Q15ZDN5/fgfg.jpg',
-  team:
-    'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1000&q=80',
+  aboutMain: 'https://i.ibb.co/Q15ZDN5/fgfg.jpg',
 }
 
 const partners = ['SunSaviour', 'Anicsun']
@@ -109,7 +106,7 @@ export default function About() {
                 src={IMG.aboutMain}
                 alt="Solar panels installation"
                 loading="lazy"
-                className="h-80 w-full rounded-3xl object-cover sm:h-[26rem]"
+                className="aspect-[4/3] w-full rounded-3xl object-cover sm:aspect-[16/10]"
               />
               <div className="animate-float absolute -bottom-6 left-6 flex items-center gap-4 rounded-2xl bg-cta px-6 py-4 shadow-xl shadow-cta/40">
                 <Sun size={30} className="text-white" />
