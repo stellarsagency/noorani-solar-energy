@@ -31,7 +31,7 @@ export default function Header() {
           <img
             src={logo}
             alt="ElecSun Solar Energy logo"
-            className="hero-anim h-24 w-auto max-w-[16rem] object-contain sm:h-24 sm:max-w-[18rem] lg:h-32 lg:max-w-[21rem]"
+            className="hero-anim h-28 w-auto max-w-[18rem] object-contain sm:h-24 sm:max-w-[18rem] lg:h-32 lg:max-w-[21rem]"
           />
         </Link>
 
