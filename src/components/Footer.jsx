@@ -121,7 +121,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <MapPin size={16} className="shrink-0 text-cta" />
-              <span>Kharian City, Pakistan</span>
+              <span>Kharian, Pakistan</span>
             </li>
           </ul>
           <form

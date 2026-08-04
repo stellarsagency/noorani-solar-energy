@@ -27,7 +27,7 @@ const contactCards = [
   {
     icon: MapPin,
     title: 'Visit Us',
-    lines: ['Kharian City, Pakistan'],
+    lines: ['Kharian, Pakistan'],
   },
   {
     icon: Clock,
