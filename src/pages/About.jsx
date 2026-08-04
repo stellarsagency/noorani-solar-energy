@@ -18,8 +18,6 @@ const IMG = {
   aboutMain: 'https://i.ibb.co/Q15ZDN5/fgfg.jpg',
 }
 
-const partners = ['SunSaviour', 'Anicsun']
-
 const badges = [
   { icon: BadgeCheck, label: 'Premium Quality' },
   { icon: ShieldCheck, label: '25+ Years Warranty' },
@@ -200,28 +198,6 @@ export default function About() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-          <SectionHeading
-            title="Trusted Partners"
-            subtitle="We partner with leading global brands for premium quality"
-          />
-          <Reveal variant="zoom" delay={100}>
-            <div className="mx-auto mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-4 rounded-3xl bg-accent-light/40 px-6 py-10 shadow-md shadow-gray-200 sm:gap-6 sm:px-10">
-              {partners.map((name, i) => (
-                <span
-                  key={name}
-                  className="animate-pop-in rounded-2xl bg-white px-8 py-4 text-xl font-extrabold uppercase tracking-widest text-navy shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:text-cta sm:px-12 sm:text-2xl"
-                  style={{ animationDelay: `${0.2 + i * 0.2}s` }}
-                >
-                  {name}
-                </span>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </section>
 

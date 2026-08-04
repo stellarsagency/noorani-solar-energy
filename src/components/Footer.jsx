@@ -42,7 +42,7 @@ export default function Footer() {
             <img
               src={logo}
               alt="ElecSun Solar Energy logo"
-              className="h-16 w-auto max-w-[13rem] object-contain"
+              className="h-20 w-auto max-w-[15rem] object-contain"
             />
           </Link>
           <p className="mt-5 text-sm leading-relaxed text-white/70">
