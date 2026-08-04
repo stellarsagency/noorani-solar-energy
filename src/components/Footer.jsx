@@ -7,7 +7,7 @@ import {
   YoutubeIcon,
 } from './SocialIcons'
 import Reveal from './Reveal'
-import logo from '../assets/logo.png'
+import logo from '../assets/Logo.png'
 
 const quickLinks = [
   { label: 'Home', to: '/' },

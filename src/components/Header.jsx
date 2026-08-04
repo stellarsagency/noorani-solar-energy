@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { ArrowRight, Menu, X } from 'lucide-react'
-import logo from '../assets/logo.png'
+import logo from '../assets/Logo.png'
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -31,7 +31,7 @@ export default function Header() {
           <img
             src={logo}
             alt="ElecSun Solar Energy logo"
-            className="hero-anim h-36 w-auto max-w-[20rem] object-contain sm:h-36 sm:max-w-[20rem] lg:h-36 lg:max-w-[22rem]"
+            className="hero-anim h-36 w-auto max-w-[20rem] object-contain sm:h-36 sm:max-w-[20rem] lg:h-24 lg:max-w-[16rem]"
           />
         </Link>
 
