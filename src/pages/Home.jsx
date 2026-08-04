@@ -133,7 +133,7 @@ function Hero() {
         style={{ animationDelay: '-7s' }}
       />
       <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-36 lg:px-8">
-        <div className="max-w-2xl">
+        <div className="ml-6 max-w-2xl lg:ml-16">
           <p
             className="hero-anim flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-cta"
             style={{ animationDelay: '0.1s' }}
