@@ -27,7 +27,7 @@ const contactCards = [
   {
     icon: MapPin,
     title: 'Visit Us',
-    lines: ['Kharian, Pakistan'],
+    lines: ['Pakistan'],
   },
   {
     icon: Clock,
@@ -211,7 +211,7 @@ export default function Contact() {
             <Reveal variant="right" delay={150}>
               <div className="group h-full overflow-hidden rounded-3xl bg-white p-3 shadow-md shadow-gray-200">
                 <iframe
-                  title="ElecSun Solar Energy location - Kharian, Pakistan"
+                  title="ElecSun Solar Energy location - Pakistan"
                   src="https://www.openstreetmap.org/export/embed.html?bbox=73.79%2C32.26%2C73.92%2C32.31&layer=mapnik&marker=32.2828%2C73.8550"
                   className="h-80 w-full rounded-2xl border-0 sm:h-full sm:min-h-[28rem]"
                   loading="lazy"

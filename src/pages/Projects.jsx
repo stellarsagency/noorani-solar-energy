@@ -28,7 +28,7 @@ const categories = [
 const projects = [
   {
     title: 'Green Valley Residence',
-    location: 'Kharian, Pakistan',
+    location: 'Pakistan',
     type: 'Residential',
     capacity: '12 kW',
     image: IMG.house,
@@ -49,7 +49,7 @@ const projects = [
   },
   {
     title: 'Sunset Villas Housing Scheme',
-    location: 'Kharian, Pakistan',
+    location: 'Pakistan',
     type: 'Residential',
     capacity: '80 kW',
     image: IMG.hero,
