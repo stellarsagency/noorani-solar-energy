@@ -24,14 +24,14 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
         <Link
           to="/"
-          className="flex shrink-0 items-center"
+          className="mr-auto flex shrink-0 items-center"
           onClick={close}
           style={{ animationDelay: '0.05s' }}
         >
           <img
             src={logo}
             alt="ElecSun Solar Energy logo"
-            className="hero-anim h-32 w-auto max-w-[19rem] object-contain sm:h-32 sm:max-w-[19rem] lg:h-36 lg:max-w-[22rem]"
+            className="hero-anim h-28 w-auto max-w-[17rem] object-contain sm:h-28 sm:max-w-[17rem] lg:h-32 lg:max-w-[20rem]"
           />
         </Link>
 
