@@ -19,12 +19,12 @@ export default function TopBar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-2 text-xs sm:gap-4 sm:px-6 sm:py-2.5 sm:text-sm lg:px-8">
         <div className="flex items-center gap-3 text-white/85 sm:gap-5">
           <a
-            href="mailto:info@elecsun.com"
-            title="info@elecsun.com"
+            href="mailto:nooranisolarenergy@gmail.com"
+            title="nooranisolarenergy@gmail.com"
             className="flex items-center gap-1.5 transition hover:text-cta sm:gap-2"
           >
             <Mail size={14} className="shrink-0 sm:size-4" />
-            <span className="hidden sm:inline">info@elecsun.com</span>
+            <span className="hidden sm:inline">nooranisolarenergy@gmail.com</span>
           </a>
           <a
             href="tel:03125868100"

@@ -21,8 +21,8 @@ const contactCards = [
   {
     icon: Mail,
     title: 'Email Us',
-    lines: ['info@elecsun.com'],
-    href: 'mailto:info@elecsun.com',
+    lines: ['nooranisolarenergy@gmail.com'],
+    href: 'mailto:nooranisolarenergy@gmail.com',
   },
   {
     icon: MapPin,
@@ -112,6 +112,19 @@ export default function Contact() {
                   className="mt-10 space-y-5"
                   onSubmit={(e) => {
                     e.preventDefault()
+                    const fd = new FormData(e.target)
+                    const body = [
+                      'Name: ' + fd.get('name'),
+                      'Email: ' + fd.get('email'),
+                      'Phone: ' + fd.get('phone'),
+                      'Interested in: ' + fd.get('service'),
+                      '',
+                      'Message:',
+                      fd.get('message'),
+                    ].join('\n')
+                    const subject =
+                      'Website Inquiry from ' + fd.get('name')
+                    window.location.href = `mailto:nooranisolarenergy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
                     setSent(true)
                   }}
                 >
@@ -124,7 +137,7 @@ export default function Contact() {
                         Full Name
                       </label>
                       <input
-                        id="name"
+                        id="name" name="name"
                         type="text"
                         required
                         placeholder="Your name"
@@ -139,7 +152,7 @@ export default function Contact() {
                         Email Address
                       </label>
                       <input
-                        id="email"
+                        id="email" name="email"
                         type="email"
                         required
                         placeholder="you@example.com"
@@ -156,7 +169,7 @@ export default function Contact() {
                         Phone Number
                       </label>
                       <input
-                        id="phone"
+                        id="phone" name="phone"
                         type="tel"
                         placeholder="03XX-XXXXXXX"
                         className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-ink transition placeholder:text-gray-400 focus:border-cta focus:outline-none focus:ring-2 focus:ring-cta/20"
@@ -170,7 +183,7 @@ export default function Contact() {
                         I am Interested In
                       </label>
                       <select
-                        id="service"
+                        id="service" name="service"
                         className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-ink transition focus:border-cta focus:outline-none focus:ring-2 focus:ring-cta/20"
                       >
                         <option>Solar Installation</option>
@@ -189,7 +202,7 @@ export default function Contact() {
                       Your Message
                     </label>
                     <textarea
-                      id="message"
+                      id="message" name="message"
                       rows="5"
                       required
                       placeholder="Tell us about your project..."

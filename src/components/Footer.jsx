@@ -113,10 +113,10 @@ export default function Footer() {
             <li className="flex items-center gap-3">
               <Mail size={16} className="shrink-0 text-cta" />
               <a
-                href="mailto:info@elecsun.com"
+                href="mailto:nooranisolarenergy@gmail.com"
                 className="transition hover:text-cta"
               >
-                info@elecsun.com
+                nooranisolarenergy@gmail.com
               </a>
             </li>
             <li className="flex items-center gap-3">
