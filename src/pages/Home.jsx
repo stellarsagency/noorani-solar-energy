@@ -124,6 +124,8 @@ function Hero() {
       <img
         src={heroBg}
         alt="House with solar panels on the roof"
+        fetchPriority="high"
+        decoding="async"
         className="animate-ken-burns absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/25" />
